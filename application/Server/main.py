@@ -1,9 +1,10 @@
-import Flask
+from fastapi import FastAPI
+from Lightweight.monitor_server import Light_weight_monitor
 
-def main():
-    app = Flask(__name__)
-    app.run()
-    
-if __name__ == "__main__":
-    main()
+app = FastAPI()
+
+@app.get("/light_log")
+async def root():
+    monitor = Light_weight_monitor()
+    return monitor.oversight(1)
     
