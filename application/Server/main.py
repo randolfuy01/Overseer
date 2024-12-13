@@ -11,18 +11,15 @@ from Lightweight import Light_weight_monitor
 Global imports
 '''
 from fastapi import FastAPI
-
+import uvicorn
+    
 app = FastAPI()
 
 @app.get("/light_log")
-async def root():
+async def light_log():
     server_logger = Light_weight_monitor()
-    aggregated_data = server_logger.aggregator_seconds(5)
+    aggregated_data = server_logger.aggregator_seconds(5)  # Ensure this is async if necessary
     return aggregated_data
-    
-    
-def main():
-    print("yello")
-    
+
 if __name__ == "__main__":
-    main()
+    uvicorn.run(app, host="127.0.0.1", port=8000)
