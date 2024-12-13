@@ -1,7 +1,7 @@
 import psutil
 import time
 import json
-
+from time import sleep
 class Light_weight_monitor:
     """
     Lightweight monitoring tool for server
@@ -75,7 +75,7 @@ class Light_weight_monitor:
         current_process_usage = len(psutil.pids())
         return current_process_usage
 
-    def time_batch(self, time: int) -> tuple:
+    def aggregator_seconds(self, time: int) -> dict:
         """
             Aggregate the monitoring data for a certain period of time
 
@@ -99,11 +99,19 @@ class Light_weight_monitor:
             total_network += self.get_network()
             total_process += self.get_process()
             timer -= 1
-            time.sleep(1)
+            sleep(1)
 
-        return (time, total_cpu, total_memory, total_disk, total_network, total_process)
+        aggregated_data = dict(
+            cpu= total_cpu,
+            memory= total_memory,
+            disk= total_disk,
+            network= total_network,
+            process= total_process
+        )
+        
+        return aggregated_data
 
-    def oversight(self, monitor_time: int):
+    def aggregator_minutes(self, monitor_time: int) -> dict:
         """
             Monitor the server extensively to ensure that data is being traced correctly over the span of 'time' -> minutes. 
             Returns a json file containing the aggregated time.
@@ -131,13 +139,15 @@ class Light_weight_monitor:
             graph_points_process.append(self.get_process())
             time.sleep(60)
         
-        return {
-            "cpu": graph_points_cpu,
-            "memory": graph_points_memory,
-            "disk": graph_points_disk,
-            "network": graph_points_network,
-            "process": graph_points_process
-        }
+        aggregated_data = dict(
+            cpu= graph_points_cpu,
+            memory= graph_points_memory,
+            disk= graph_points_disk,
+            network= graph_points_network,
+            process= graph_points_process
+        )
+        
+        return aggregated_data
         
     def logger(self, data: dict, filepath: str) -> int:
         """
