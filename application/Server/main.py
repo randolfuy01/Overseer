@@ -1,5 +1,16 @@
-from fastapi import FastAPI
+'''
+Contributors: randolfuy01
+'''
+
+'''
+Local / Package imports
+'''
 from Lightweight import Light_weight_monitor
+
+''' 
+Global imports
+'''
+from fastapi import FastAPI
 
 app = FastAPI()
 

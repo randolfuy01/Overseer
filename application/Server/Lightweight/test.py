@@ -1,5 +1,17 @@
+''' 
+Contributors: randolfuy01
+'''
+
+''' 
+Local / Package imports
+'''
+from logger import Light_weight_monitor
+
+'''
+Global imports
+'''
 import unittest
-from application.Server.Lightweight.logger import Light_weight_monitor
+
 
 
 class TestLightweightMonitor(unittest.TestCase):

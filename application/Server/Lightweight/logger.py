@@ -1,3 +1,10 @@
+''' 
+Contributors: randolfuy01
+'''
+
+'''
+Global imports
+'''
 import psutil
 import time
 import json
