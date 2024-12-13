@@ -11,7 +11,7 @@
 - **Extendable**: Built with modularity in mind for easy customization and extension.
 
 
-## Future Features
+## Project Work
 
 - **Real-Time Dashboard for monitoring serverside processes
 - **Logger for outputting results from testing you systems
