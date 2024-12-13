@@ -1,5 +1,5 @@
 import unittest
-from monitor_server import Light_weight_monitor
+from application.Server.Lightweight.logger import Light_weight_monitor
 
 
 class TestLightweightMonitor(unittest.TestCase):

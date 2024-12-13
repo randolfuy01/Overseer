@@ -1,10 +1,17 @@
 from fastapi import FastAPI
-from Lightweight.monitor_server import Light_weight_monitor
+from Lightweight import Light_weight_monitor
 
 app = FastAPI()
 
 @app.get("/light_log")
 async def root():
-    monitor = Light_weight_monitor()
-    return monitor.oversight(1)
+    server_logger = Light_weight_monitor()
+    aggregated_data = server_logger.aggregator_seconds(5)
+    return aggregated_data
     
+    
+def main():
+    print("yello")
+    
+if __name__ == "__main__":
+    main()

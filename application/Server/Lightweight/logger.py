@@ -2,6 +2,7 @@ import psutil
 import time
 import json
 from time import sleep
+
 class Light_weight_monitor:
     """
     Lightweight monitoring tool for server
@@ -102,9 +103,9 @@ class Light_weight_monitor:
             sleep(1)
 
         aggregated_data = dict(
-            cpu= total_cpu,
-            memory= total_memory,
-            disk= total_disk,
+            cpu= total_cpu / time,
+            memory= total_memory / time,
+            disk= total_disk / time,
             network= total_network,
             process= total_process
         )
